@@ -1,0 +1,188 @@
+{%load static%}
+<center>
+<div class="container-fluid">
+<link rel="stylesheet" href="{%static 'style.css'%}">
+<script xmlns="http://www.w3.org/1999/html">
+   function validate(){
+       var name=document.getElementById("name");
+       var dob=document.getElementById("dob");
+       var age=document.getElementById("age");
+       var gender=document.getElementById("gender");
+       var phonenumber=document.getElementById("phonenumber");
+       var mailid=document.getElementById("mailid");
+       var address=document.getElementById("address");
+       var department=document.getElementById("department");
+       var course=document.getElementById("course");
+       var purpose=document.getElementById("purpose");
+       var materials=document.getElementById("materials");
+
+       if(name.value==""){
+           alert("plz enter your name");
+           document.myforms.name.focus();
+           return false;
+       }
+       if(dob.value==""){
+          alert("plz enter your dob");
+          document.myforms.dob.focus();
+          return false;
+       }
+       if(age.value==""){
+          alert("plz enter your age");
+           document.myforms.age.focus();
+           return false;
+       }
+       if(!male.checked && !female.checked){
+           alert("plz select your gender");
+           return false;
+       }
+       if(phonenumber.value==""){
+           alert("plz enter your phonenumber");
+           document.myforms.phonenumber.focus();
+           return false;
+       }
+       if(mailid.value==""){
+           alert("plz enter the mailid");
+           document.myforms.mailid.focus();
+           return false;
+       }
+       if(address.value==""){
+           alert("plz enter the address");
+           document.myforms.address.focus();
+           return false;
+       }
+       if(slct1.value==""){
+           alert("plz select your department");
+           document.myforms.slct1.focus();
+           return false;
+       }
+       if(slct2.value==""){
+           alert("plz select your course");
+           document.myforms.slct2.focus();
+           return false;
+       }
+       if(purpose.value==""){
+           alert("plz select your purpose");
+           document.myforms.purpose.focus();
+           return false;
+       }
+       if(!m1.checked && !m2.checked && !m3.checked && !m4.checked){
+           alert("plz select your material");
+           document.myforms.materials.focus();
+           return false;
+       }
+       else{
+         return confirm('order is confirmed');
+       }
+   }
+</script>
+<body style="background-image:url({%static 'images/flat.jpg'%});background-repeat:no-repeat;background-size:cover;">
+<h1><font color="yellow">DETAILS FORM</h1>
+    <form action="newpage" name="myforms" method="post" onsubmit="return validate()">
+{% csrf_token %}
+        <table>
+        <tr>
+            <tr>
+                <td>NAME:</td>
+                <td><input type="text" name="name" id="name"><br><br></td>
+            </tr>
+            <tr>
+     <td>DATE OF BIRTH:</td>
+                <td><input type="date" name="dob" id="dob"><br><br></td></tr>
+     <tr>
+      <td>AGE:</td>
+         <td><input type="text" name="age" id="age"><br></td></tr>
+      <tr>
+      <td>GENDER:</td>
+          <td><input type="radio" name="gender" id="male">Male
+          <input type="radio" name="gender" id="female">Female<br><br></td></tr>
+
+<tr>
+      <td>PHONENUMBER:</td>
+    <td><input type="text" name="phonenumber" id="phonenumber"><br><br></td></tr>
+      <tr>
+      <td>MAILID:</td>
+          <td><input type="text" name="mailid" id="mailid"><br><br></td></tr>
+<tr>
+      <td>ADDRESS:</td>
+    <td><textarea cols="50" rows="5" name="address" id="address" style="center"></textarea><br><br></td></tr>
+            <tr>
+                <td for="">DEPARTMENTS</td>
+                <td> <select name="slct1" id="slct1" onchange="populate(this.id,'slct2')">
+                        <option value="">--Choose Department--</option>
+                        <option value="engineering">ENGINEERING</option>
+                        <option value="arts">ARTS</option>
+                 </select>
+                 </td>
+            </tr>
+            <tr>
+                <td for="">COURSES</td>
+               <td>
+               <select name="slct2" id="slct2"></select>
+               </td>
+            </tr>
+            <script>
+
+        function populate(s1,s2)
+        {
+            var s1 = document.getElementById(s1);
+            var s2 = document.getElementById(s2);
+
+             s2.innerHTML = "";
+
+             if(s1.value == 'engineering')
+            {
+               var optionArray = ['civil|Civil','computer|Computer','mech|Mech','eee|EEE','ece|ECE',
+               'chemical|CHEMICAL'];
+            }
+            else if(s1.value == 'arts')
+            {
+                var optionArray = ['bcom|Bcom','bsc|Bsc','msc|Msc','bca|BCA','bba|BBA','mba|MBA'];
+            }
+            for(var option in optionArray)
+            {
+                var pair = optionArray[option].split("|");
+                var newoption = document.createElement("option");
+
+                newoption.value = pair[0];
+                newoption.innerHTML=pair[1];
+                s2.options.add(newoption);
+            }
+       }
+</script>
+<br><br>
+        <tr>
+            <td>PURPOSE:</td>
+            <td><select id="purpose" name="purpose">
+             <option value="">select the purpose</option>
+             <option value="1">Enquiry</option>
+             <option value="2">Place Order</option>
+             <option value="3">Return</option>
+            </select><br>
+            </td>
+        </tr>
+
+            <tbody>
+            <tr>
+                <td>MATERIALS:</td>
+                  <td><input type="checkbox" name="materials" value="notebook"id="m1">Notebook
+                     <input type="checkbox" name="materials" value="pen" id="m2">pen
+                      <input type="checkbox" name="materials" value="pencil" id="m3">pencil
+                     <input type="checkbox" name="materials" value="minidrafter" id="m4">minidrafter</td>
+                </td>
+            </tr>
+            </tbody>
+            <tr>
+        <td><form onsubmit="if(!confirm('Is filled out correctly?')){return false;}">
+            <input type="button" value="submit">
+
+          <a href="/"><input type="button" value="Logout" name="Logout"><br></a>
+           </form>
+            <a href="/">home</a>
+    </form></td></tr>
+</div>
+    </form>
+
+    </table>
+</center>
+</body>
+</html>

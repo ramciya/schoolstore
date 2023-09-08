@@ -1,0 +1,47 @@
+{% load static %}
+<script xmlns="http://www.w3.org/1999/html">
+   function validate(){
+       var username=document.getElementById("username");
+       var password=document.getElementById("password");
+
+
+       if(username.value==""){
+           alert("plz enter the username");
+           document.myforms.username.focus();
+           return false;
+       }
+       if(password.value==""){
+          alert("plz enter the password");
+           document.myforms.password.focus();
+           return false;
+       }
+       return true;
+   }
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet">
+    <title>Login Page</title>
+</head>
+<center>
+<h1> LOGIN PAGE</h1>
+<body style="background-image:url({%static 'images/scl.jpg'%});background-repeat:no-repeat;background-size:cover;">
+
+<div class="container">
+<form name="myforms" action="login" method="post" onsubmit="return validate()">
+   {% csrf_token %}
+    <label>USERNAME:</label>
+    <input type="text" name="username" id="username"><br>
+    <br>
+    <label>PASSWORD:</label>
+     <input type="text" name="password" id="password"><br>
+<br>
+      <a href="newpage"><input type="submit"  id="submit" name="submit"></a>
+</form>
+</center>
+</div>
+
+</body>
+</html>

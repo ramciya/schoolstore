@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.bg-img{
+background:url('https://www.istockphoto.com/photo/college-students-arriving-for-night-school-gm1456749194-491690566?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_top&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fcollege&utm_term=college%3A%3A%3A')
+height:10%;
+}
+
+</style>
+</head>
+
+
+<div class="navbar">
+  <a href="/register">SIGNUP</a>
+  <a href="/login">LOGIN</a>
+  <a href="/register">REGISTER</a>
+  <div class="dropdown">
+    <button class="dropbtn">DEPARTMENT
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="https://www.mechanicalengineering.com">MECHANICAL ENGINEERING</a>
+      <a href="https://www.electrinicalengineering.com">ELECTRICAL ENGINEERING</a>
+      <a href="https://www.electronicsengineering.com">ELECTRONICS ENGINEERING</a>
+      <a href="https://www.civilengineering.com">CIVIL ENGINEERING</a>
+      <a href="https://www.computerengineering.com">COMPUTER ENGINEERING</a>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+
+
+</div>
+</html>
